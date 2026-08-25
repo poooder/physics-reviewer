@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.production
+.pytest_cache/
+uploads/
+reports/
+chroma_store/
+*.db
+.claude/
+tmp/
+evaluation/
+assets/
+*.tex
+*.bib
+dissertation_structure.md

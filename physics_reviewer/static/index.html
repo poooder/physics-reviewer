@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Physics Reviewer</title>
+    <link rel="stylesheet" href="/static/styles.css?v=20260824-3" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <h1>Physics Reviewer</h1>
+            <p>Qwen + LangGraph multi-agent paper review</p>
+          </div>
+          <a class="docs-link" href="/docs" target="_blank" rel="noreferrer">API Docs</a>
+        </header>
+
+        <div class="layout">
+          <aside class="upload-panel">
+            <form id="upload-form">
+              <label class="dropzone" id="dropzone">
+                <input id="pdf-input" type="file" accept="application/pdf,.pdf" multiple />
+                <span class="upload-icon" aria-hidden="true">+</span>
+                <strong id="file-label">Choose or drop PDFs</strong>
+                <small>Files are queued immediately and processed in the background.</small>
+              </label>
+
+              <div class="file-meta" id="file-meta">No files selected</div>
+
+              <button class="primary-button" id="submit-button" type="submit" disabled>
+                Start Batch Review
+              </button>
+            </form>
+
+            <div class="status-panel" aria-live="polite">
+              <div class="status-row">
+                <span class="status-dot" id="status-dot"></span>
+                <span id="status-text">Waiting for upload</span>
+              </div>
+              <div class="progress" aria-hidden="true">
+                <span id="progress-bar"></span>
+              </div>
+            </div>
+
+            <section class="task-panel hidden" id="task-panel">
+              <div class="task-panel-header">
+                <h3>Batch Tasks</h3>
+                <div class="export-actions" id="export-actions" hidden>
+                  <a id="export-csv" class="export-link" href="#">CSV</a>
+                  <a id="export-xlsx" class="export-link" href="#">Excel</a>
+                </div>
+              </div>
+              <div class="task-list" id="task-list"></div>
+            </section>
+          </aside>
+
+          <section class="results-panel">
+            <div class="empty-state" id="empty-state">
+              <h2>Review results appear here</h2>
+              <p>Upload one or more text-based physics paper PDFs.</p>
+            </div>
+
+            <article class="result-view hidden" id="result-view">
+              <header class="result-header">
+                <div>
+                  <span class="eyebrow">Review Report</span>
+                  <h2 id="paper-title"></h2>
+                </div>
+                <div class="overall-score">
+                  <span id="overall-score">--</span>
+                  <small>/100</small>
+                </div>
+              </header>
+
+              <div class="score-grid" id="score-grid"></div>
+
+              <section class="summary-section">
+                <h3>Summary</h3>
+                <p id="summary"></p>
+              </section>
+
+              <div class="detail-grid">
+                <section>
+                  <h3>Strengths</h3>
+                  <ul id="strengths"></ul>
+                </section>
+                <section>
+                  <h3>Weaknesses</h3>
+                  <ul id="weaknesses"></ul>
+                </section>
+                <section>
+                  <h3>Required Checks</h3>
+                  <ul id="required-checks"></ul>
+                </section>
+                <section>
+                  <h3>Uncertainty Notes</h3>
+                  <ul id="uncertainty-notes"></ul>
+                </section>
+              </div>
+
+              <section class="agent-section">
+                <h3>Similar Papers</h3>
+                <div class="literature-list" id="literature-list"></div>
+              </section>
+
+              <section class="agent-section">
+                <h3>Agent Findings</h3>
+                <div class="agent-list" id="agent-list"></div>
+              </section>
+            </article>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js?v=20260824-3"></script>
+  </body>
+</html>
