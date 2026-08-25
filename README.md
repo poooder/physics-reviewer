@@ -208,20 +208,6 @@ an in-process thread pool, so run exactly one `app` container.
 Caddy obtains TLS certificates automatically and protects every route with Basic Auth. Back up
 the `reviewer_data` volume before upgrades.
 
-## Limitations and Privacy
-
-- PDF parsing currently supports text-based PDFs only; there is no OCR pipeline.
-- Equations, tables, figures, and multi-column layouts may be extracted imperfectly.
-- Text beyond `MAX_PAPER_CHARS` is not reviewed and is reported as truncated.
-- Retrieved literature can be incomplete or irrelevant and cannot prove absence of novelty.
-- Qwen output can be inconsistent or incorrect and requires human verification.
-- Paper text is transmitted to the configured Qwen endpoint. Titles/search queries are sent to
-  external literature services when retrieval is enabled.
-- SQLite, local caching, and the thread pool are single-instance components. Service restarts mark
-  incomplete tasks as failed because uploaded PDF bytes are not persisted for recovery.
-- Multi-instance deployment requires a shared database, durable object storage, and a distributed
-  task queue such as Celery or RQ with Redis.
-
 ## Project Structure
 
 ```text
